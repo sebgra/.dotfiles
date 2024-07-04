@@ -7,6 +7,7 @@ resource:
 	cp ~/.dotfiles/.bashrc ~/.bashrc
 	cp ~/.dotfiles/.bash_profile ~/.bash_profile
 	cp ~/.dotfiles/.tmux.conf ~/.tmux.conf
+	cp ~/.dotfiles/starship.toml ~/.config/starship.toml
 pull:
 	git pull
  
