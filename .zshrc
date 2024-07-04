@@ -175,6 +175,15 @@ _fzf_comprun() {
   esac
 }
 
+mact () {
+   mamba activate "$(conda info --envs | fzf | awk '{print $1}')"
+ }
+ 
+ mdeact () {
+   mamba deactivate
+ }
+
+
 #Initiate zoxide
 
 eval "$(zoxide init zsh)"
