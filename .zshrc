@@ -186,8 +186,13 @@ mact () {
    mamba activate "$(conda info --envs | fzf | awk '{print $1}')"
  }
  
- mdeact () {
+mdeact () {
    mamba deactivate
+ }
+
+ # Select a tmux session through fzf and airmux
+smux () {
+    airmux start -f $(echo | eza $HOME/.config/airmux/$(eza ${HOME}/.config/airmux/ | fzf --tmux center | awk '{print $1}'))
  }
 
 
@@ -219,3 +224,6 @@ if [ -f "/home/sebastien/miniforge3/etc/profile.d/mamba.sh" ]; then
     . "/home/sebastien/miniforge3/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
+
+# tmuxp
+export DISABLE_AUTO_TITLE='true'
