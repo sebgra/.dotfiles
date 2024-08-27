@@ -26,22 +26,21 @@ windows:
         - # pane no. 2
           working_dir: "~/Bureau/yeast_atlas"
           commands:
-            - mamba activate hic_analyses
+            - mamba activate "${HOME}/mambaforge/envs/hic_analyses"
           clear: true
 
         - # pane no. 3
           working_dir: "~/Bureau"
           commands:
-            - echo third pane
             - ssh maestro
           clear: true
 
         - # pane no. 4
           working_dir: "~/Bureau"
           commands:
-            - echo fourth pane
+            # - echo fourth pane
             - ssh maestro
-            - watch -n 10 squeue -u sgradit && echo "Press q to quit"
+            - watch -n 10 squeue -u sgradit
           clear: false
 
         - # pane no. 5
