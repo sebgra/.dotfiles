@@ -9,7 +9,9 @@ resource:
 	cp ~/.dotfiles/.tmux.conf ~/.tmux.conf
 	cp ~/.dotfiles/starship.toml ~/.config/starship.toml
 	cp -r ~/.dotfiles/airmux/ ~/.config/
+	cp -r ~/.dotfiles/lazygit/ ~/.config/
 	cp ~/.dotfiles/bat/config ~/.config/bat/config
+
 pull:
 	git pull
  
