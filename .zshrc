@@ -1,7 +1,7 @@
 autoload antigen
  
 # Source vers Antigen
-source ~/.dotfiles/antigen/antigen.zsh
+source $HOME/antigen/antigen.zsh
  
 # Installation de oh-my-zsh
 antigen use oh-my-zsh
@@ -134,31 +134,22 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Launch tmux and starship at shell launch
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
 eval "$(starship init zsh)"
 
+
+# Make sure fzf is running and binding keys are working
+## --> https://unix.stackexchange.com/questions/665689/fzf-ctlr-r-not-triggering-history-search-on-command-line
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
- # -- Use fd instead of fzf --
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-
-# export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# # export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-
-# # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
-# # - The first argument to the function ($1) is the base path to start traversal
-# # - See the source code (completion.{bash,zsh}) for the details.
-# _fzf_compgen_path() {
-#   fd --hidden --exclude .git . "$1"
-# }
-
-# # Use fd to generate the list for directory completion
-# _fzf_compgen_dir() {
-#   fd --type=d --hidden --exclude .git . "$1"
-# }
 
 # Set previews for fzf
 
