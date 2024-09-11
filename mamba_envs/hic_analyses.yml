@@ -1,4 +1,4 @@
-name: /home/sardine/mambaforge/envs/hic_analyses
+name: hic_analyses
 channels:
   - anaconda
   - bioconda

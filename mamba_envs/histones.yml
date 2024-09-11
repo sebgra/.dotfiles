@@ -1,4 +1,4 @@
-name: /home/sardine/mambaforge/envs/histones
+name: histones
 channels:
   - bioconda
   - nvidia

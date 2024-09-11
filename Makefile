@@ -24,9 +24,9 @@ install:
 
 python_setup:
 	cp -r ~/.dotfiles/mamba_envs ~/
-	mamba env create -f ~/mamba_envs/hic_analyses.yml
+	mamba env create  -f ~/mamba_envs/hic_analyses.yml
 	mamba env create -f ~/mamba_envs/hicberg.yml
-	mamba env create -f ~/mamba_envs/histones.yml
+	# mamba env create -f ~/mamba_envs/histones.yml
 	mamba env create -f ~/mamba_envs/tf2.yml
 
 setup:
