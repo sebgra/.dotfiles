@@ -183,7 +183,7 @@ mdeact () {
 
  # Select a tmux session through fzf and airmux
 smux () {
-    airmux start -f $(echo | eza $HOME/.config/airmux/$(eza ${HOME}/.config/airmux/ | fzf --tmux center | awk '{print $1}'))
+    airmux start -f $(echo | eza $HOME/.config/airmux/$(eza ${HOME}/.config/airmux/ | fzf-tmux center | awk '{print $1}'))
  }
 
 
