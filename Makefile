@@ -11,6 +11,7 @@ resource:
 	cp -r ~/.dotfiles/airmux/ ~/.config/
 	cp -r ~/.dotfiles/lazygit/ ~/.config/
 	cp ~/.dotfiles/bat/config ~/.config/bat/config
+	
 
 pull:
 	git pull
@@ -20,6 +21,13 @@ antigen:
  
 install: 
 	antigen source
+
+python_setup:
+	cp -r ~/.dotfiles/mamba_envs ~/
+	mamba env create -f ~/mamba_envs/hic_analyses.yml
+	mamba env create -f ~/mamba_envs/hicberg.yml
+	mamba env create -f ~/mamba_envs/histones.yml
+	mamba env create -f ~/mamba_envs/tf2.yml
 
 setup:
 	bash terminal_upgrade.sh
