@@ -115,6 +115,18 @@ touch "$(batcat --config-file)"
 # Add catpuccin to batcat config
 echo '--theme="Catppuccin Frappe"' >> "$(batcat --config-file)"
 
+#Install Tabiew 
+## usage on csv tw <path_to_tsv(s)> --separator $'\;' --theme monokai
+cargo install tabiew;
+
+# Install otree
+cargo install --git https://github.com/fioncat/otree;
+
+# Install serpl
+## Install ripgrep dependency
+sudo apt-get install ripgrep;
+cargo install serpl;
+
 #Add catpuccin to KDE
 git clone --depth=1 https://github.com/catppuccin/kde catppuccin-kde &&  catppuccin-kde;
 ./install.sh;
@@ -135,7 +147,7 @@ sudo install lazygit /usr/local/bin
 
 # Install mambaforge
 ## Make sure not replacing init which is already in .zshrc
-
+cd;
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 bash Miniforge3-$(uname)-$(uname -m).sh
 

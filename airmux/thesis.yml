@@ -1,0 +1,45 @@
+# Name of the session
+name: thesis
+
+# Root directory of the session
+root: ~/
+# Commands to execute when creating the session
+on_create:
+# Commands to execute when closing the session
+on_stop:
+# List of windows of session
+windows:
+  # You can use null or ~ to use the default window name
+  - ~:
+      # Any valid tmux layout is accepted
+      layout: 4f63,379x68,0,0{189x68,0,0,27,189x68,190,0[189x34,190,0,28,189x33,190,35{94x33,190,35,29,94x33,285,35,30}]}
+      # Short form for panes, with a single command each:
+      panes:
+        - # Working directory for the pane (alias: root)
+          # If declared and left empty or set to ~ (null in Json), defaults to $HOME instead.
+          working_dir: "~/Bureau/phd_thesis"
+          # Command to execute in the pane
+          commands:
+            - lazygit
+          clear: false
+
+        - # pane no. 2
+          working_dir: "~/Bureau/phd_thesis"
+          commands:
+            - l
+          clear: false
+
+        - # pane no. 3
+          working_dir: "~/Bureau/phd_thesis"
+          commands:
+            - l
+          clear: true
+
+        - # pane no. 4
+          working_dir: "~/Bureau"
+          commands:
+            - 'l'
+          clear: true
+
+        
+
