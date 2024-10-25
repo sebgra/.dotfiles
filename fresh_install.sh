@@ -152,5 +152,33 @@ curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mi
 bash Miniforge3-$(uname)-$(uname -m).sh
 
 
+# Nvim setup
+
+## Install nvChad prerequisites
+sudo snapp install nvim --classic;
+
+git clone https://github.com/NvChad/starter ~/.config/nvim && nvim;
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash;
+nvm install 20;
+
+### Lazygit
+# required
+mv ~/.config/nvim{,.bak};
+
+# optional but recommended
+mv ~/.local/share/nvim{,.bak};
+mv ~/.local/state/nvim{,.bak};
+mv ~/.cache/nvim{,.bak};
+
+git clone https://github.com/LazyVim/starter ~/.config/nvim;
+rm -rf ~/.config/nvim/.git;
+nvim;
+
+### Luarocks
+
+sudo apt install luarocks;
+luarocks --version;
+cargo install fd-find;
 
 
