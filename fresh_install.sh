@@ -1,3 +1,8 @@
+# Check for graphics (Nvidia)
+ubuntu-drivers devices;
+
+ubuntu-drivers autoinstall;
+
 # Install essential (make, etc.)
 
 sudo apt-get install build-essential;
