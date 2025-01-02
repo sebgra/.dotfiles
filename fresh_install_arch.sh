@@ -140,4 +140,8 @@ luarocks --version;
 # Install fd-find
 cargo install fd-find;
 
+# Install ghostty
+sudo pacman -Sy ghostty;
+reboot;
+
 
