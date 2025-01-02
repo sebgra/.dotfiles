@@ -145,8 +145,8 @@ eval "$(starship init zsh)"
 # Make sure fzf is running and binding keys are working
 ## --> https://unix.stackexchange.com/questions/665689/fzf-ctlr-r-not-triggering-history-search-on-command-line
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+# source /usr/share/doc/fzf/examples/key-bindings.zsh
+# source /usr/share/doc/fzf/examples/completion.zsh
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -189,7 +189,7 @@ smux () {
 
 #Initiate zoxide
 
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 source ~/.aliases
 
 
