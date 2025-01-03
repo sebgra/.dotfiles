@@ -11,7 +11,8 @@ resource:
 	cp -r ~/.dotfiles/airmux/ ~/.config/
 	cp -r ~/.dotfiles/lazygit/ ~/.config/
 	cp ~/.dotfiles/bat/config ~/.config/bat/config
-	
+	cp ~/.dotfiles/system/user.conf ~/.config/dconf/user.conf
+	dconf load / < ~/.config/dconf/user.conf	
 
 pull:
 	git pull

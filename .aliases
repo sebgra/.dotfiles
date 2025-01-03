@@ -1,4 +1,5 @@
-alias cat="batcat"
+alias cat="cat"
 alias ls="eza --icons=always -lhm"
 alias cd="z"
+alias vim="nvim"
 alias ai_assistant="/home/sebastien/ai-assistant-electron/out/chatgpt-electron-linux-x64/ && ./chatgpt-electron;"
