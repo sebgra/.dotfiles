@@ -23,8 +23,30 @@ sudo pacman -Sy zsh;
 ## Change bash for zsh
 chsh -s $(which zsh);
 
-## reboot to apply
-reboot;
+#Oh-my-zsh part
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
+
+
+# ## reboot to apply
+# reboot;
+
+# Install ghostty
+sudo pacman -Sy ghostty;
+
+# Install bat
+sudo pacman -Sy bat;
+## Customise bat
+
+mkdir -p "$(bat --config-dir)/themes"
+wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
+# Rebuild bat's cache
+bat cache --build
+# Check if theme is available
+bat --list-themes
+
+touch "$(bat --config-file)"
+
+# Add catpuccin to batcat config
 
 # Install antigen
 git clone https://github.com/zsh-users/antigen.git;
@@ -35,6 +57,9 @@ antigen update;
 
 # Change theme for zsh
 cd ~/.dotfiles && make && source ~/.zshrc;
+
+## Install cargoo first
+curl https://sh.rustup.rs -sSf | sh;
 
 # Install zoxide (cd)
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh;
@@ -69,21 +94,21 @@ sudo pacman -Sy tmux;
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm;
 tmux source ~/.tmux.conf;
 
-# Install bat
-sudo pacman -Sy bat;
-## Customise bat
+# # Install bat
+# sudo pacman -Sy bat;
+# ## Customise bat
 
-mkdir -p "$(bat --config-dir)/themes"
-wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
-# Rebuild bat's cache
-bat cache --build
-# Check if theme is available
-bat --list-themes
+# mkdir -p "$(bat --config-dir)/themes"
+# wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
+# # Rebuild bat's cache
+# bat cache --build
+# # Check if theme is available
+# bat --list-themes
 
-touch "$(bat --config-file)"
+# touch "$(bat --config-file)"
 
-# Add catpuccin to batcat config
-echo '--theme="Catppuccin Frappe"' >> "$(bat --config-file)"
+# # Add catpuccin to batcat config
+# echo '--theme="Catppuccin Frappe"' >> "$(bat --config-file)"
 
 #Install Tabiew 
 ## usage on csv tw <path_to_tsv(s)> --separator $'\;' --theme monokai
@@ -98,9 +123,6 @@ sudo pacman -Sy ripgrep;
 cargo install serpl;
 
 # Install airmux
-
-## Install cargoo first
-curl https://sh.rustup.rs -sSf | sh;
 cargo install airmux;
 
 # Install lazygit
@@ -142,6 +164,21 @@ cargo install fd-find;
 
 # Install ghostty
 sudo pacman -Sy ghostty;
+
+# Nvidia drivers
+## check harware
+lspci | grep -E "VGA|3D";
+
+# System update
+sudo pacman -Syu --noconfirm;
+
+# Required packages
+sudo pacman -S --noconfirm nvidia nvidia-utils nvidia-settings opencl-nvidia xorg-server-devel;
+
+# Build config
+sudo mkinitcpio -P;
+sudo nvidia-xconfig;
+
 reboot;
 
 
