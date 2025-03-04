@@ -41,7 +41,7 @@ fdisk /dev/mve0n; # SSD
 
 ## Answer yes to chroot
 
-grub-install --target=x86_64-efi --efi-directory=/boot/recheck;
+grub-install --target=x86_64-efi --efi-directory=/boot --recheck;
 
 # Check addition of boot option
 
