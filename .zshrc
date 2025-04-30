@@ -190,8 +190,8 @@ smux () {
 
 #Initiate zoxide
 
-# eval "$(zoxide init zsh)"
-source ~/.aliases
+eval "$(zoxide init zsh)"
+# source ~/.aliases
 
 
 # >>> conda initialize >>>
@@ -220,4 +220,6 @@ fi
 # tmuxp
 export DISABLE_AUTO_TITLE='true'
 
+#source aliases
+source ~/.aliases;
 
