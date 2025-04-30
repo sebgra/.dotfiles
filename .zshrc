@@ -1,5 +1,5 @@
 autoload antigen
- 
+
 # Source vers Antigen
 source $HOME/antigen/antigen.zsh
  
@@ -104,7 +104,7 @@ export FZF_DEFAULT_OPTS=" \
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh;
 
 # User configuration
 
@@ -140,20 +140,21 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   exec tmux
 fi
 eval "$(starship init zsh)"
-
+tmux source ~/.tmux.conf;
 
 # Make sure fzf is running and binding keys are working
 ## --> https://unix.stackexchange.com/questions/665689/fzf-ctlr-r-not-triggering-history-search-on-command-line
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# source /usr/share/doc/fzf/examples/key-bindings.zsh
-# source /usr/share/doc/fzf/examples/completion.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh;
+source <(fzf --zsh);
+#source /usr/share/doc/fzf/examples/key-bindings.zsh
+#source /usr/share/doc/fzf/examples/completion.zsh
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 
 # Set previews for fzf
 
-show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else batcat -n --color=always --line-range :500 {}; fi"
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
@@ -218,3 +219,5 @@ fi
 
 # tmuxp
 export DISABLE_AUTO_TITLE='true'
+
+
