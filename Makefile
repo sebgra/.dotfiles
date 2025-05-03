@@ -13,7 +13,7 @@ resource:
 	cp ~/.dotfiles/bat/config ~/.config/bat/config
 	cp ~/.dotfiles/system/user.conf ~/.config/dconf/user.conf
 	dconf load / < ~/.config/dconf/user.conf	
-
+	cp ~/.dotfiles/ghostty/config ~/.config/ghostty/
 pull:
 	git pull
  
