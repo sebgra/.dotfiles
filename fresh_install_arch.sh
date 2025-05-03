@@ -1,9 +1,12 @@
 # Global update
 sudo pacman -Syy
 
+#Install yay
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 # Install utilities
 sudo pacman -Sy keepassxc
 sudo pacman -Sy firefox
+yay -S zen-browser-bin
 sudo pacman -Sy git
 sudo pacman -Sy code
 sudo curl https://sh.rustup.rs -sSf | sh
