@@ -6,6 +6,7 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 # Install utilities
 sudo pacman -Sy keepassxc
 sudo pacman -Sy firefox
+sudo pacman -Sy bc
 yay -S zen-browser-bin
 sudo pacman -Sy git
 sudo pacman -Sy code
