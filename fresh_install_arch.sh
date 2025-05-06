@@ -179,3 +179,22 @@ sudo mkinitcpio -P
 sudo nvidia-xconfig
 
 reboot
+
+# Cuda and CuDnn 
+
+yay cuda; # sudo pacman -S cuda
+sudo pacman -S linux-headers;
+yay nvidia-dkms;
+yay nvidia-utils;
+yay nvidia-dkms nvidia-utils;
+yay nvidia-dkms;
+yay nvidia-utils;
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64;
+
+## Check cuda installation
+nvcc --version;
+
+## Install Tensorflow with gpu compatibility
+pip install 'tensorflow[and-cuda]';
+
