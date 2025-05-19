@@ -1,5 +1,5 @@
 # Global update
-sudo pacman -Syy
+sudo pacman -Syu
 
 #Install yay
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
@@ -11,6 +11,7 @@ yay -S zen-browser-bin
 sudo pacman -Sy git
 sudo pacman -Sy code
 sudo curl https://sh.rustup.rs -sSf | sh
+sudo pacman -Sy python-pip
 
 # Config git account
 ssh-keygen -o -t rsa -C "sebastiengradit@hotmail.com" # Copy to git
@@ -180,21 +181,22 @@ sudo nvidia-xconfig
 
 reboot
 
-# Cuda and CuDnn 
+# Cuda and CuDnn
+## Inspired from https://jaggu-iitm.medium.com/setting-up-deep-learning-with-cuda-tensorflow-and-keras-on-arch-linux-with-dual-gpu-nvidia-gpu-82963d2ecb75
+yay cuda # sudo pacman -S cuda
+sudo pacman -S linux-header
+yay cuda
+yay cudann
+yay nvidia-dkms
+yay nvidia-utils
+yay nvidia-dkms nvidia-utils
+yay nvidia-dkms
+yay nvidia-utils
 
-yay cuda; # sudo pacman -S cuda
-sudo pacman -S linux-headers;
-yay nvidia-dkms;
-yay nvidia-utils;
-yay nvidia-dkms nvidia-utils;
-yay nvidia-dkms;
-yay nvidia-utils;
-
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64;
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
 
 ## Check cuda installation
-nvcc --version;
+nvcc --version
 
 ## Install Tensorflow with gpu compatibility
-pip install 'tensorflow[and-cuda]';
-
+pip install 'tensorflow[and-cuda]'
