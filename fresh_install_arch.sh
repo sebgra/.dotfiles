@@ -14,6 +14,8 @@ sudo curl https://sh.rustup.rs -sSf | sh
 sudo pacman -Sy python-pip
 sudo yay python-pywall16
 
+sudo yay dysk
+
 # Config git account
 ssh-keygen -o -t rsa -C "sebastiengradit@hotmail.com" # Copy to git
 git config --global user.email sebastiengradit@hotmail.com && git config --global user.name sebgra
