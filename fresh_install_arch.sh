@@ -12,6 +12,7 @@ sudo pacman -Sy git
 sudo pacman -Sy code
 sudo curl https://sh.rustup.rs -sSf | sh
 sudo pacman -Sy python-pip
+sudo yay python-pywall16
 
 # Config git account
 ssh-keygen -o -t rsa -C "sebastiengradit@hotmail.com" # Copy to git
