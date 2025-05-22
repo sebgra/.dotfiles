@@ -9,7 +9,7 @@ sudo pacman -Sy firefox
 sudo pacman -Sy bc
 yay -S zen-browser-bin
 sudo pacman -Sy git
-sudo pacman -Sy code
+sudo yay -S visual-studio-code-bin --noconfirm
 sudo curl https://sh.rustup.rs -sSf | sh
 sudo pacman -Sy python-pip
 sudo yay python-pywall16
