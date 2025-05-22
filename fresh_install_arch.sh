@@ -13,6 +13,7 @@ sudo pacman -Sy code
 sudo curl https://sh.rustup.rs -sSf | sh
 sudo pacman -Sy python-pip
 sudo yay python-pywall16
+yay -S spotify-player-full
 
 sudo yay dysk
 
