@@ -1,3 +1,20 @@
+## Semi-Automated Installation
+
+# 0. Plug USB-drive and boot on it 
+
+# 1. Execute the script /scripts/pre_arch_install_step_0.sh (script in the usb medium)
+#       It will install all the dependencies for archinstall
+
+# 2. Run archinstall and complete installation
+
+# 3. After installation select chrooting procedure
+#       Then execute /scripts/post_arch_install_step_0.sh (script in the usb medium)
+#       It will set all the necessary for grub
+
+# 4. After reboot, execute  post_arch_install_step_1.sh (on computer)
+#       It will set-up the config for grub to detect Windows partition and make the proper dual-boot
+
+
 # Install windows first, then shrink partition to free space for arch install
 #
 # then boot on USB stick containing arch
@@ -9,16 +26,20 @@ loadkeys fr;
 pacman -Syy;
 
 # Install archinstall and dependencies
-pacman -Sy archinstall archlinux-keyring python python-pyparted python-simple-term-menu python-annotated-types python-pydantic python-pydantic-core python-typing_extensions;
+pacman -Sy archinstall archlinux-keyring python python-pip python-pyparted python-simple-term-menu python-annotated-types python-pydantic python-pydantic-core python-typing_extensions ;
+
+pacman -S python-cryptography python-cffi;
+
+# Then install arch through archinstall
 
 # Create appropriate partions
 #
-fdisk /dev/mve0n; # SSD
+fdisk /dev/mve0n1; # SSD
 
 # Then type n to create partitions, three to be created:
 #
 # ## n then enter then "Last sector" :  +1G
-# ## n then enter then "Last sector" : +20G
+# ## n then enter then "Last sector" : +80G
 # ## n then enter then "Last sector" --> enter (this will get the remaining free space
 #
 # Validate the partition creation by writting the new partition table by entering "w"
@@ -60,7 +81,7 @@ sudo pacman -Sy os-prober;
 
 # Execute os-prober
 
-os-prober;
+sudo os-prober;
 
 # Create grub config
 grub-mkconfig -o /boot/grub/grub.cfg;

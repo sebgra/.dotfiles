@@ -1,4 +1,4 @@
-autoload antigen
+# autoload antigen
 
 # Source vers Antigen
 source $HOME/antigen/antigen.zsh
@@ -197,7 +197,7 @@ smux () {
 
 #Initiate zoxide
 
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 # source ~/.aliases
 
 

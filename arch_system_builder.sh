@@ -14,6 +14,8 @@ STARSHIP_INSTALL_SCRIPT="https://starship.rs/install.sh"
 NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/CascadiaCode.zip"
 MINIFORGE_URL="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 BAT_THEME_URL="https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme"
+# # Path to Antigen
+# ANTIGEN_DIR="$HOME/antigen"
 
 # --- Helper Functions ---
 
@@ -56,6 +58,7 @@ install_rust() {
     curl "${RUSTUP_INSTALL_SCRIPT}" -sSf | sh -s -- -y
     # Add cargo to PATH for current session
     export PATH="$HOME/.cargo/bin:$PATH"
+    export PATH=$HOME/.cargo/bin:$PATH
   else
     echo "Rust is already installed."
   fi
@@ -94,27 +97,66 @@ install_pacman_packages \
 install_yay_packages \
   zen-browser-bin \
   visual-studio-code-bin \
-  python-pywall16 \
+  python-pywal16 \
   spotify-player-full \
   dysk \
   navi \
-  ranger
+  ranger \
+  eza \
+  otree \
+  fd \
+
 
 # 4. Git Configuration
+
+
 echo "Configuring Git account..."
-ssh-keygen -o -t rsa -C "${GIT_EMAIL}" -f ~/.ssh/id_rsa -N "" # -N "" for no passphrase
-echo "Please copy the SSH public key (~/.ssh/id_rsa.pub) to your Git hosting service (e.g., GitHub)."
-read -p "Press Enter after copying your SSH key..."
 
-git config --global user.email "${GIT_EMAIL}"
-git config --global user.name "${GIT_USERNAME}"
+if [ ! -e "$HOME/.ssh/id_rsa.pub" ]; then
+  echo "No SSH public key found, creating a new key...";
+  # Ensure the .ssh directory exists with correct permissions
+  mkdir -p "$HOME/.ssh"
+  chmod 700 "$HOME/.ssh"
 
-echo "Cloning dotfiles from ${DOTFILES_REPO}..."
-if [ ! -d "$HOME/.dotfiles" ]; then
-  git clone "${DOTFILES_REPO}" "$HOME/.dotfiles"
+  ssh-keygen -t rsa -C "${GIT_EMAIL}" -f "$HOME/.ssh/id_rsa" -N ""; # -N "" for no passphrase
+  echo "Please copy the SSH public key ($HOME/.ssh/id_rsa.pub) to your Git hosting service (e.g., GitHub).";
+  echo "Key to copy:";
+  cat "$HOME/.ssh/id_rsa.pub";
+  read -p "Press Enter after copying your SSH key...";
+
+  git config --global user.email "${GIT_EMAIL}";
+  git config --global user.name "${GIT_USERNAME}";
 else
-  echo "Dotfiles directory already exists. Skipping clone."
+  echo "SSH key (~/.ssh/id_rsa.pub) already exists. Checking Git configuration...";
+  # Optionally, you can add a check here to see if git config is already set
+  CURRENT_EMAIL=$(git config --global user.email)
+  CURRENT_NAME=$(git config --global user.name)
+
+  if [ "${CURRENT_EMAIL}" != "${GIT_EMAIL}" ] || [ "${CURRENT_NAME}" != "${GIT_USERNAME}" ]; then
+    echo "Git global user.email or user.name does not match provided values. Updating...";
+    git config --global user.email "${GIT_EMAIL}";
+    git config --global user.name "${GIT_USERNAME}";
+  else
+    echo "Git global user.email and user.name are already configured correctly.";
+  fi
 fi
+
+
+# Install Antigen if it's not already there
+if [ ! -d "$HOME/antigen" ]; then
+  echo "Installing Antigen..."
+  cd
+  git clone https://github.com/zsh-users/antigen.git 
+  echo "Antigen installed."
+fi
+
+# # Source Antigen - this must be run every time .zshrc is loaded
+# if [ -f "$HOME/antigen/antigen.zsh" ]; then
+#   source "$HOME/antigen/antigen.zsh"
+# else
+#   echo "Error: antigen.zsh not found at $HOME/antigen/antigen.zsh. Please check your Antigen installation."
+# fi
+
 
 # 5. Zsh Configuration
 echo "Configuring Zsh..."
@@ -133,12 +175,11 @@ else
   echo "Oh-My-Zsh is already installed."
 fi
 
-# Install Antigen
-if [ ! -d "$HOME/antigen" ]; then
-  echo "Installing Antigen..."
-  git clone https://github.com/zsh-users/antigen.git "$HOME/antigen"
+echo "Cloning dotfiles from ${DOTFILES_REPO}..."
+if [ ! -d "$HOME/.dotfiles" ]; then
+  git clone "${DOTFILES_REPO}" "$HOME/.dotfiles"
 else
-  echo "Antigen is already cloned."
+  echo "Dotfiles directory already exists. Skipping clone."
 fi
 
 echo "Applying dotfiles Zsh configuration..."
@@ -151,7 +192,7 @@ else
 fi
 
 # Source .zshrc to apply changes immediately for subsequent commands
-source "$HOME/.zshrc"
+# source "$HOME/.zshrc"
 
 # 6. Rust Toolchain and Cargo Packages
 install_rust
@@ -187,12 +228,8 @@ else
   echo "Nerd Font already downloaded. Skipping."
 fi
 
-cargo install eza
-cargo install tabiew
-cargo install --git https://github.com/fioncat/otree # otree
-cargo install serpl
+# cargo install tabiew
 cargo install airmux
-cargo install fd-find
 
 # 7. Bat Customization
 echo "Customizing bat..."
@@ -239,6 +276,7 @@ if [ ! -f "$HOME/mambaforge/bin/conda" ] && [ ! -f "$HOME/miniforge3/bin/conda" 
   # Use -b for batch mode, -p for prefix, -s for silent
   bash "${MINIFORGE_INSTALLER}" -b -p "$HOME/miniforge3"
   rm "${MINIFORGE_INSTALLER}"
+  mamba init
   echo "Mambaforge installed to $HOME/miniforge3. Please initialize it in your shell if not already done."
   echo "Example: ~/miniforge3/bin/conda init zsh"
 else
@@ -288,13 +326,14 @@ if lspci | grep -E "VGA|3D" | grep -i nvidia; then
     nvidia \
     nvidia-utils \
     nvidia-settings \
-    opencl-nvidia
+    opencl-nvidia \
+    #nvidia-dkms
 
   # Use yay for dkms version if specific version is preferred or needed
   install_yay_packages \
-    nvidia-dkms \
     cuda \
     cudnn
+    # nvidia-dkms \
 
   echo "Building kernel modules with mkinitcpio..."
   sudo mkinitcpio -P
@@ -315,7 +354,7 @@ if lspci | grep -E "VGA|3D" | grep -i nvidia; then
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64 # For current session
 
   echo "Installing TensorFlow with GPU compatibility..."
-  pip install 'tensorflow[and-cuda]'
+  yay -Sy python-pip install 'tensorflow[and-cuda]' --noconfirm
 else
   echo "No NVIDIA GPU detected. Skipping NVIDIA driver and CUDA installation."
 fi
