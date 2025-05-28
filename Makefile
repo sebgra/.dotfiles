@@ -7,7 +7,7 @@ resource:
 	cp ~/.dotfiles/.bashrc ~/.bashrc
 	cp ~/.dotfiles/.bash_profile ~/.bash_profile
 	cp ~/.dotfiles/.tmux.conf ~/.tmux.conf
-	cp ~/.dotfiles/starship.toml ~/.config/starship.toml
+	cp ~/.dotfiles/starship/starship.toml ~/.config/starship.toml
 	cp -r ~/.dotfiles/airmux/ ~/.config/
 	cp -r ~/.dotfiles/lazygit/ ~/.config/
 	if [ ! -f ~/.config/bat/config ]; then \
