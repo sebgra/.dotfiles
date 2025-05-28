@@ -1,0 +1,64 @@
+{
+  "bar.customModules.storage.paths": [
+    "/"
+  ],
+  "theme.bar.location": "top",
+  "bar.autoHide": "fullscreen",
+  "theme.bar.border.width": "0.15em",
+  "bar.battery.label": false,
+  "theme.bar.buttons.battery.enableBorder": false,
+  "theme.font.weight": 100,
+  "theme.font.size": "0.99em",
+  "theme.font.name": "CaskaydiaCove Nerd Font Propo",
+  "theme.font.style": "italic",
+  "theme.font.label": "CaskaydiaCove Nerd Font Propo Semi-Bold Italic",
+  "bar.layouts": {
+    "0": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "network",
+        "systray",
+        "clock",
+        "notifications"
+      ]
+    },
+    "1": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "clock",
+        "notifications"
+      ]
+    },
+    "2": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "clock",
+        "notifications"
+      ]
+    }
+  }
+}

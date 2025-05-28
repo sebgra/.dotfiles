@@ -35,6 +35,22 @@ resource:
 		cp ~/.dotfiles/rofi/catpuccin-lavrent-mocha.rasi ~/.config/rofi/
 	fi
 
+	if [ ! -f ~/.config/hypr/hyprland.conf ]; then \
+		mkdir -p ~/.config/hypr/; \
+		touch ~/.config/hypr/hyprland.conf; \
+	else \
+		cp  ~/.dotfiles/hypr/hyprland.conf ~/.config/hypr/;
+	fi
+
+	if [ ! -f ~/.config/hyprpanel/config.json ]; then \
+		mkdir -p ~/.config/hyprpanel/; \
+		touch ~/.config/hyprpanel/config.json; \
+		touch ~/.config/hyprpanel/modules.json; \
+		touch ~/.config/hyprpanel/modules.scss; \
+
+	else \
+		cp  ~/.dotfiles/hyprpanel/* ~/.config/hyprpanel/;
+	fi
 
 pull:
 	git pull
