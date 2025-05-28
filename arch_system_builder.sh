@@ -90,6 +90,7 @@ install_pacman_packages \
   firefox \
   python-pip \
   ghostty \
+  kitty \
   bat \
   luarocks \
   xorg-server-devel # For NVIDIA drivers
@@ -358,6 +359,25 @@ if lspci | grep -E "VGA|3D" | grep -i nvidia; then
 else
   echo "No NVIDIA GPU detected. Skipping NVIDIA driver and CUDA installation."
 fi
+
+# 12. Hyprland installation with add-ons and configuration
+
+## Initial setup
+
+echo "Installing Hyprland and primary add-ons"
+
+install_yay_packages \
+    hyprland \
+    rofi \
+    wofi \
+
+## Hyprpanel + dependencies installation
+
+echo "Installing Hyprpanel and dependencies"
+
+yay -S --needed aylurs-gtk-shell-git wireplumber libgtop bluez bluez-utils btop networkmanager dart-sass wl-clipboard brightnessctl swww python upower pacman-contrib power-profiles-daemon gvfs gtksourceview3 libsoup3 grimblast-git wf-recorder-git hyprpicker matugen-bin python-gpustat hyprsunset-git
+yay -S ags-hyprpanel-git --noconfirm
+
 
 echo "--- Setup Complete ---"
 echo "A reboot might be necessary for all changes to take full effect, especially after shell or display driver changes."

@@ -19,12 +19,22 @@ resource:
 
 	cp ~/.dotfiles/system/user.conf ~/.config/dconf/user.conf
 	dconf load / < ~/.config/dconf/user.conf
-	if [ ! -f ~/.dotfiles/ghostty/config  ]; then \
-		mkdir -p ~/.dotfiles/ghostty/ ; \
+	
+	if [ ! -f ~/.config/ghostty/config  ]; then \
+		mkdir -p ~/.config/ghostty/ ; \
 		touch ~/.config/ghostty/config; \
 	else \
-		cp ~/.dotfiles/ghostty/config ~/.config/bat/config; \
+		cp ~/.dotfiles/ghostty/config ~/.config/ghostty/config; \
 	fi
+
+	if [ ! -f ~/.config/rofi/config.rasi ]; then \
+		mkdir -p ~/.config/rofi/; \
+		touch ~/.config/rofi/config.rasi; \
+	else \
+		cp ~/.dotfiles/rofi/config.rasi ~/.config/rofi/config.rasi; \
+		cp ~/.dotfiles/rofi/catpuccin-lavrent-mocha.rasi ~/.config/rofi/
+	fi
+
 
 pull:
 	git pull
