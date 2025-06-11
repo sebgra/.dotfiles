@@ -16,4 +16,3 @@ For all the elements concerning the customization of the system, the installatio
 
 ```bash
 chmod +x arch_system_builder.sh && bash arch_system_builder.sh
-```
