@@ -38,7 +38,7 @@ resource:
 		mkdir -p ~/.config/hypr/; \
 		touch ~/.config/hypr/hyprland.conf; \
 	else \
-		cp  ~/.dotfiles/hypr/hyprland.conf ~/.config/hypr/;\
+		cp  ~/.dotfiles/hyprland/hyprland.conf ~/.config/hypr/;\
 	fi
 
 	if [ ! -f ~/.config/hyprpanel/config.json ]; then \
