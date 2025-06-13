@@ -277,6 +277,7 @@ if [ ! -f "$HOME/mambaforge/bin/conda" ] && [ ! -f "$HOME/miniforge3/bin/conda" 
   # Use -b for batch mode, -p for prefix, -s for silent
   bash "${MINIFORGE_INSTALLER}" -b -p "$HOME/miniforge3"
   rm "${MINIFORGE_INSTALLER}"
+  ~/miniforge3/bin/conda init zsh
   mamba init
   echo "Mambaforge installed to $HOME/miniforge3. Please initialize it in your shell if not already done."
   echo "Example: ~/miniforge3/bin/conda init zsh"
