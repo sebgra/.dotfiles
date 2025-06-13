@@ -31,7 +31,7 @@ resource:
 		touch ~/.config/rofi/config.rasi; \
 	else \
 		cp ~/.dotfiles/rofi/config.rasi ~/.config/rofi/config.rasi; \
-		cp ~/.dotfiles/rofi/catpuccin-lavrent-mocha.rasi ~/.config/rofi/;\
+		cp ~/.dotfiles/rofi/catppuccin-lavrent-mocha.rasi ~/.config/rofi/;\
 	fi
 
 	if [ ! -f ~/.config/hypr/hyprland.conf ]; then \
