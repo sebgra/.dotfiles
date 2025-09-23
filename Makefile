@@ -50,6 +50,12 @@ resource:
 		cp  ~/.dotfiles/hyprpanel/* ~/.config/hyprpanel/;\
 	fi
 
+	if [ ! -f ~/.config/nvim/init.lua ]; then \
+		mkdir -p ~/.config/nvim/; \
+	else \
+		cp -r  ~/.dotfiles/nvim/ ~/.config/nvim/;\
+	fi
+
 pull:
 	git pull
  
