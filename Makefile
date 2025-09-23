@@ -53,7 +53,9 @@ resource:
 	if [ ! -f ~/.config/nvim/init.lua ]; then \
 		mkdir -p ~/.config/nvim/; \
 	else \
-		cp -r  ~/.dotfiles/nvim/ ~/.config/nvim/;\
+		cp -r ~/.dotfiles/nvim/lua/plugins/*   ~/.config/nvim/lua/plugins/
+		cp -r ~/.dotfiles/nvim/lua/config/   ~/.config/nvim/lua/config/
+		cp -r ~/.dotfiles/nvim/*   ~/.config/nvim/
 	fi
 
 pull:
