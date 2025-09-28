@@ -106,6 +106,11 @@ install_yay_packages \
   eza \
   otree \
   fd \
+  termscp \
+  tree \
+  bat \
+  tldr \
+  texlive-full \
 
 
 # 4. Git Configuration
