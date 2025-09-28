@@ -43,7 +43,7 @@ font-family = CaskaydiaCove Nerd Font
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 #
-theme = catppuccin-frappe
+theme = Catppuccin Frappe
 background-opacity = 0.76
 background-blur-radius = 40
 
