@@ -9,6 +9,7 @@ resource:
 	cp ~/.dotfiles/starship/starship.toml ~/.config/starship.toml
 	cp -r ~/.dotfiles/airmux/ ~/.config/
 	cp -r ~/.dotfiles/lazygit/ ~/.config/
+	
 	if [ ! -f ~/.config/bat/config ]; then \
 		mkdir -p ~/.config/bat/; \
 		touch ~/.config/bat/config; \
@@ -19,7 +20,7 @@ resource:
 	cp ~/.dotfiles/system/user.conf ~/.config/dconf/user.conf
 	dconf load / < ~/.config/dconf/user.conf
 	
-	if [ ! -f ~/.config/ghostty/config  ]; then \
+	if [ ! -f ~/.config/ghostty/config ]; then \
 		mkdir -p ~/.config/ghostty/ ; \
 		touch ~/.config/ghostty/config; \
 	else \
@@ -53,9 +54,9 @@ resource:
 	if [ ! -f ~/.config/nvim/init.lua ]; then \
 		mkdir -p ~/.config/nvim/; \
 	else \
-		cp -r ~/.dotfiles/nvim/lua/plugins/*   ~/.config/nvim/lua/plugins/
-		cp -r ~/.dotfiles/nvim/lua/config/   ~/.config/nvim/lua/config/
-		cp -r ~/.dotfiles/nvim/*   ~/.config/nvim/
+		cp -r ~/.dotfiles/nvim/lua/plugins/* ~/.config/nvim/lua/plugins/ ;\
+		cp -r ~/.dotfiles/nvim/lua/config/   ~/.config/nvim/lua/config/ ;\
+		cp -r ~/.dotfiles/nvim/* ~/.config/nvim/ ;\
 	fi
 
 pull:
