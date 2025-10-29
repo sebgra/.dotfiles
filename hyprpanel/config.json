@@ -456,5 +456,6 @@
   "bar.clock.format": "%a %b %d  %I:%M %p",
   "bar.customModules.kbLayout.labelType": "code",
   "bar.customModules.kbLayout.leftClick": " hyprctl switchxkblayout logitech-mx-keys next",
+  "bar.customModules.kbLayout.middleClick": "  hyprctl switchxkblayout  telink-wireless-gaming-keyboard-2   next",
   "bar.customModules.kbLayout.rightClick": " hyprctl switchxkblayout   rdr-zuoya-gmk87 next"
 }
