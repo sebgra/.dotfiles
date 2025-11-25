@@ -11,11 +11,11 @@ resource:
 	cp -r ~/.dotfiles/lazygit/ ~/.config/
 	
 	if [ ! -f ~/.config/bat/config ]; then \
-		mkdir -p ~/.config/bat/; \
-		touch ~/.config/bat/config; \
-	else \
-		cp ~/.dotfiles/bat/config ~/.config/bat/config; \
-	fi
+        mkdir -p ~/.config/bat/; \
+        touch ~/.config/bat/config; \
+    else \
+        cp ~/.dotfiles/bat/config ~/.config/bat/config; \
+    fi
 
 	cp ~/.dotfiles/system/user.conf ~/.config/dconf/user.conf
 	dconf load / < ~/.config/dconf/user.conf
