@@ -111,6 +111,7 @@ install_yay_packages \
   bat \
   tldr \
   texlive-full \
+  ntfs-3g \
 
 
 # 4. Git Configuration

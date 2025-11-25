@@ -16,3 +16,13 @@ For all the elements concerning the customization of the system, the installatio
 
 ```bash
 chmod +x arch_system_builder.sh && bash arch_system_builder.sh
+```
+
+### HDD mount
+
+To mount HDD drive get its UUID with ``` lsblk -f``` then add the following line to `less /etc/fstab`:
+
+```
+#HDD
+UUID=my_UUID /mnt/HDD ntfs defaults 0 0
+```

@@ -59,6 +59,15 @@ resource:
 		cp -r ~/.dotfiles/nvim/* ~/.config/nvim/ ;\
 	fi
 
+# 	# HDD mounting
+	if [ ! -f ~/mnt/HDD ]; then \
+		mkdir -p ~/mnt/HDD; \
+		lsblk -f;
+	else \
+		echo "HDD mount point already exists"; \
+	fi
+
+
 pull:
 	git pull
  
