@@ -13,9 +13,9 @@ resource:
 	if [ ! -f ~/.config/bat/config ]; then \
         mkdir -p ~/.config/bat/; \
         touch ~/.config/bat/config; \
-    else \
+    ; else \
         cp ~/.dotfiles/bat/config ~/.config/bat/config; \
-    fi
+    ; fi
 
 	cp ~/.dotfiles/system/user.conf ~/.config/dconf/user.conf
 	dconf load / < ~/.config/dconf/user.conf
@@ -23,49 +23,49 @@ resource:
 	if [ ! -f ~/.config/ghostty/config ]; then \
 		mkdir -p ~/.config/ghostty/ ; \
 		touch ~/.config/ghostty/config; \
-	else \
+	; else \
 		cp ~/.dotfiles/ghostty/config ~/.config/ghostty/config; \
-	fi
+	; fi
 
 	if [ ! -f ~/.config/rofi/config.rasi ]; then \
 		mkdir -p ~/.config/rofi/; \
 		touch ~/.config/rofi/config.rasi; \
-	else \
+	; else \
 		cp ~/.dotfiles/rofi/config.rasi ~/.config/rofi/config.rasi; \
 		cp ~/.dotfiles/rofi/catppuccin-lavrent-mocha.rasi ~/.config/rofi/;\
-	fi
+	; fi
 
 	if [ ! -f ~/.config/hypr/hyprland.conf ]; then \
 		mkdir -p ~/.config/hypr/; \
 		touch ~/.config/hypr/hyprland.conf; \
-	else \
+	; else \
 		cp  ~/.dotfiles/hyprland/hyprland.conf ~/.config/hypr/;\
-	fi
+	; fi
 
 	if [ ! -f ~/.config/hyprpanel/config.json ]; then \
 		mkdir -p ~/.config/hyprpanel/; \
 		touch ~/.config/hyprpanel/config.json; \
 		touch ~/.config/hyprpanel/modules.json; \
 		touch ~/.config/hyprpanel/modules.scss; \
-	else \
+	; else \
 		cp  ~/.dotfiles/hyprpanel/* ~/.config/hyprpanel/;\
-	fi
+	; fi
 
 	if [ ! -f ~/.config/nvim/init.lua ]; then \
 		mkdir -p ~/.config/nvim/; \
-	else \
+	; else \
 		cp -r ~/.dotfiles/nvim/lua/plugins/* ~/.config/nvim/lua/plugins/ ;\
 		cp -r ~/.dotfiles/nvim/lua/config/   ~/.config/nvim/lua/config/ ;\
 		cp -r ~/.dotfiles/nvim/* ~/.config/nvim/ ;\
-	fi
+	; fi
 
 # 	# HDD mounting
 	if [ ! -f ~/mnt/HDD ]; then \
 		mkdir -p ~/mnt/HDD; \
-		lsblk -f;
-	else \
+		lsblk -f; \
+	; else \
 		echo "HDD mount point already exists"; \
-	fi
+	; fi
 
 
 pull:
