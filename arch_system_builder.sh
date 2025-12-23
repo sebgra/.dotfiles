@@ -94,9 +94,13 @@ install_pacman_packages \
   bat \
   luarocks \
   xorg-server-devel # For NVIDIA drivers
+  python-installer \
+   python-wheel
 
 install_yay_packages \
   zen-browser-bin \
+  python-build \
+  python-nvidia-ml-py \
   visual-studio-code-bin \
   python-pywal16 \
   spotify-player-full \
