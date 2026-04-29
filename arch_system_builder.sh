@@ -94,8 +94,8 @@ install_pacman_packages \
   bat \
   luarocks \
   xorg-server-devel # For NVIDIA drivers
-  python-installer \
-   python-wheel
+python-installer \
+  python-wheel
 
 install_yay_packages \
   zen-browser-bin \
@@ -114,50 +114,48 @@ install_yay_packages \
   tree \
   bat \
   tldr \
-  # texlive-full \
-  # ntfs-3g \
-
+  github-cli \
+  texlive-full
+# ntfs-3g \
 
 # 4. Git Configuration
-
 
 echo "Configuring Git account..."
 
 if [ ! -e "$HOME/.ssh/id_rsa.pub" ]; then
-  echo "No SSH public key found, creating a new key...";
+  echo "No SSH public key found, creating a new key..."
   # Ensure the .ssh directory exists with correct permissions
   mkdir -p "$HOME/.ssh"
   chmod 700 "$HOME/.ssh"
 
-  ssh-keygen -t rsa -C "${GIT_EMAIL}" -f "$HOME/.ssh/id_rsa" -N ""; # -N "" for no passphrase
-  echo "Please copy the SSH public key ($HOME/.ssh/id_rsa.pub) to your Git hosting service (e.g., GitHub).";
-  echo "Key to copy:";
-  cat "$HOME/.ssh/id_rsa.pub";
-  read -p "Press Enter after copying your SSH key...";
+  ssh-keygen -t rsa -C "${GIT_EMAIL}" -f "$HOME/.ssh/id_rsa" -N "" # -N "" for no passphrase
+  echo "Please copy the SSH public key ($HOME/.ssh/id_rsa.pub) to your Git hosting service (e.g., GitHub)."
+  echo "Key to copy:"
+  cat "$HOME/.ssh/id_rsa.pub"
+  read -p "Press Enter after copying your SSH key..."
 
-  git config --global user.email "${GIT_EMAIL}";
-  git config --global user.name "${GIT_USERNAME}";
+  git config --global user.email "${GIT_EMAIL}"
+  git config --global user.name "${GIT_USERNAME}"
 else
-  echo "SSH key (~/.ssh/id_rsa.pub) already exists. Checking Git configuration...";
+  echo "SSH key (~/.ssh/id_rsa.pub) already exists. Checking Git configuration..."
   # Optionally, you can add a check here to see if git config is already set
   CURRENT_EMAIL=$(git config --global user.email)
   CURRENT_NAME=$(git config --global user.name)
 
   if [ "${CURRENT_EMAIL}" != "${GIT_EMAIL}" ] || [ "${CURRENT_NAME}" != "${GIT_USERNAME}" ]; then
-    echo "Git global user.email or user.name does not match provided values. Updating...";
-    git config --global user.email "${GIT_EMAIL}";
-    git config --global user.name "${GIT_USERNAME}";
+    echo "Git global user.email or user.name does not match provided values. Updating..."
+    git config --global user.email "${GIT_EMAIL}"
+    git config --global user.name "${GIT_USERNAME}"
   else
-    echo "Git global user.email and user.name are already configured correctly.";
+    echo "Git global user.email and user.name are already configured correctly."
   fi
 fi
-
 
 # Install Antigen if it's not already there
 if [ ! -d "$HOME/antigen" ]; then
   echo "Installing Antigen..."
   cd
-  git clone https://github.com/zsh-users/antigen.git 
+  git clone https://github.com/zsh-users/antigen.git
   echo "Antigen installed."
 fi
 
@@ -167,7 +165,6 @@ fi
 # else
 #   echo "Error: antigen.zsh not found at $HOME/antigen/antigen.zsh. Please check your Antigen installation."
 # fi
-
 
 # 5. Zsh Configuration
 echo "Configuring Zsh..."
@@ -338,14 +335,14 @@ if lspci | grep -E "VGA|3D" | grep -i nvidia; then
     nvidia \
     nvidia-utils \
     nvidia-settings \
-    opencl-nvidia \
-    #nvidia-dkms
+    opencl-nvidia
+  #nvidia-dkms
 
   # Use yay for dkms version if specific version is preferred or needed
   install_yay_packages \
     cuda \
     cudnn
-    # nvidia-dkms \
+  # nvidia-dkms \
 
   echo "Building kernel modules with mkinitcpio..."
   sudo mkinitcpio -P
@@ -378,9 +375,9 @@ fi
 echo "Installing Hyprland and primary add-ons"
 
 install_yay_packages \
-    hyprland \
-    rofi \
-    wofi \
+  hyprland \
+  rofi \
+  wofi
 
 ## Hyprpanel + dependencies installation
 
@@ -389,8 +386,6 @@ echo "Installing Hyprpanel and dependencies"
 yay -S --needed aylurs-gtk-shell-git wireplumber libgtop bluez bluez-utils btop networkmanager dart-sass wl-clipboard brightnessctl swww python upower pacman-contrib power-profiles-daemon gvfs gtksourceview3 libsoup3 grimblast-git wf-recorder-git hyprpicker matugen-bin python-gpustat hyprsunset-git
 yay -S ags-hyprpanel-git --noconfirm
 
-
 echo "--- Setup Complete ---"
 echo "A reboot might be necessary for all changes to take full effect, especially after shell or display driver changes."
 echo "You can type 'reboot' to restart your system now if needed."
-
